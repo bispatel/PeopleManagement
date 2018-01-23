@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+	 <div class="container">   
+    <div style="padding:0 20px">
+    <table class="table table-striped">
+		<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th>Description</th>
+		    <th>Total Block</th>
+		    <th>Total Village</th>
+		      <th>Total People</th>
+		      <th>Action</th>
+		</tr>  
+    	<tr th:each = "dist : ${districtList}">
+    		<td th:text="${dist.districtId}"></td>
+    		<td th:text="${dist.districtName}"></td>
+    		<td th:text="${dist.description}"></td>    
+    		<td th:text="${dist.totalBlocks}"></td>  	
+    		<td th:text="${dist.totalVillage}"></td>  	
+    		<td th:text="${dist.totalPeople}"></td>  		
+    		<td>    			
+    			<a th:href="@{/distEdit/{id}(id=${dist.districtId})}" class="btn btn-primary btn-xs">Edit</a>
+    			 <a th:href="@{/distDelete/{id}(id=${dist.districtId})}" class="btn btn-danger btn-xs">Delete</a>
+    		</td>
+    	</tr>
+    </table>
+    <a href="/distAdd" class="btn btn-primary">Add District</a>
+	</div>    
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
