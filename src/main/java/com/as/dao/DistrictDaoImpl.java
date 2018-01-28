@@ -4,16 +4,18 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.as.model.District;
 
 @Repository
 @Transactional
-public class DistrictDao  {
+public class DistrictDaoImpl    {
 	 @Autowired
 	    private SessionFactory sessionFactory;
 	 
@@ -45,9 +47,10 @@ public class DistrictDao  {
 	    	getSession().saveOrUpdate(dist);
 	    }
 	    
-	    public void deleteDistrict(District dist){
-	    	getSession().delete(dist);
-	    }
+	    public void deleteDistrict(int distId){
+	    	getSession().delete(distId);	   
+	    	}
 
+	 
 	
 }

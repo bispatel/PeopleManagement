@@ -14,26 +14,26 @@
 		    <th>Name</th>
 		    <th>Description</th>
 		    <th>Status</th>
-		    <th>Total Block</th>
+		    <th>District</th>
 		    <th>Total Village</th>
 		    <th>Total People</th>
 		    <th>Action</th>
 		</tr>  
-    	<tr th:each = "dist,iterator : ${districtList}">
+    	<tr th:each = "block,iterator : ${blockList}">
     		<td th:text="${iterator.index+1}"></td>
-    		<td th:text="${dist.districtName}"></td>
-    		<td th:text="${dist.description}"></td>    
-    		<td th:text="${dist.status}"></td>    
-    		<td th:text="${dist.totalBlocks}"></td>  	
-    		<td th:text="${dist.totalVillage}"></td>  	
-    		<td th:text="${dist.totalPeople}"></td>  		
+    		<td th:text="${block.blockName}"></td>
+    		<td th:text="${block.description}"></td>    
+    		<td th:text="${block.status}"></td>   
+    		<td th:text="${block.district.districtName}"></td>    
+    		<td th:text="${block.totalVillage}"></td>  	
+    		<td th:text="${block.totalPeople}"></td>  		
     		<td>    			
-    			<a th:href="@{/distEdit/{id}(id=${dist.districtId})}" class="btn btn-primary btn-xs">Edit</a>
-    			 <a th:href="@{/distDelete/{id}(id=${dist.districtId})}" class="btn btn-danger btn-xs">Delete</a>
+    			<a th:href="@{/blockEdit/{id}(id=${block.blockId})}" class="btn btn-primary btn-xs">Edit</a>
+    			 <a th:href="@{/blockDelete/{id}(id=${block.blockId})}" class="btn btn-danger btn-xs">Delete</a>
     		</td>
     	</tr>
     </table>
-    <a href="/distAdd" class="btn btn-primary">Add District</a>
+    <a href="/blockAdd" class="btn btn-primary">Add Block</a>
 	</div>    
 	</div>
 

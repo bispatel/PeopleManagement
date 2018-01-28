@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+	 <div class="container">   
+    <div style="padding:0 20px">
+    <table class="table table-striped">
+		<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th>Description</th>
+		    <th>Status</th>
+		    <th>District</th>
+		    <th>Block</th>
+		    <th>Total People</th>
+		    <th>Action</th>
+		</tr>  
+    	<tr th:each = "village,iterator : ${villageList}">
+    		<td th:text="${iterator.index+1}"></td>
+    		<td th:text="${village.villageName}"></td>
+    		<td th:text="${village.description}"></td>    
+    		<td th:text="${village.status}"></td>   
+    		<td th:text="${village.block.district.districtName}"></td>
+    		<td th:text="${village.block.blockName}"></td>
+    		<td th:text="${village.totalPeople}"></td>  		
+    		<td>    			
+    			<a th:href="@{/villageEdit/{id}(id=${village.villageId})}" class="btn btn-primary btn-xs">Edit</a>
+    			 <a th:href="@{/villageDelete/{id}(id=${village.villageId})}" class="btn btn-danger btn-xs">Delete</a>
+    		</td>
+    	</tr>
+    </table>
+    <a href="/villageAdd" class="btn btn-primary">Add Block</a>
+	</div>    
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
